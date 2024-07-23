@@ -31,8 +31,8 @@ public class ConsumerTest {
         // Request and Response body
         DslPart reqAndResBody = new PactDslJsonBody()
                 .numberType("id", 123)
-                .stringType("firstName", "Lokesh")
-                .stringType("lastName", "Villalan")
+                .stringType("firstName", "Arnab")
+                .stringType("lastName", "Mitra")
                 .stringType("email", "lokeee@ex.com");
 
         //Interaction
@@ -52,14 +52,14 @@ public class ConsumerTest {
     public void postRequestTest(){
         Map<String, Object> reqBody = new HashMap<>();
         reqBody.put("id", 123);
-        reqBody.put("firstName", "Lokesh");
-        reqBody.put("lastName", "Villalan");
+        reqBody.put("firstName", "Arnab");
+        reqBody.put("lastName", "Mitra");
         reqBody.put("email", "lokeee@ex.com");
 
         //send request, get response, assert response
         given().baseUri("http://localhost:8282").headers(headers).body(reqBody).log().all().
         when().post("/api/users").
-        then().statusCode(201).body("firstName", equalTo("Lokesh")).log().all();
+        then().statusCode(201).body("firstName", equalTo("Arnab")).log().all();
 
     }
 
